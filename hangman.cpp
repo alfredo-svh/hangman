@@ -99,7 +99,7 @@ int main(){
 	cout << stages[curStage]<<endl;
 	printCurrentGuess(currentGuess, word);
 
-	while(!bGameOver){
+	while(1){
 		cout << "Make a guess"<<endl;
 		cout <<"> ";
 		cin >> input;
@@ -134,6 +134,33 @@ int main(){
 		else if(lettersFound == wordLen){
 			bGameOver = true;
 			cout << "Congratulations! You won! The word was "<< word << endl;
+		}
+		
+		if(bGameOver){
+			cout << "Do you want to play again? (y/n)"<<endl;
+			cin >> input;
+
+			if(input == 'y'){
+				bGameOver = false;
+				curStage = 0;
+				lettersFound = 0;
+				currentGuess = {};
+				guessedLetters = {};
+
+				word = listOfWords[rand() % listOfWords.size()];
+				word.pop_back();
+				wordLen = word.length();
+				for(size_t i = 0; i< wordLen; i++){
+					currentGuess.push_back(false);
+				}
+
+				cout << stages[curStage]<<endl;
+				printCurrentGuess(currentGuess, word);
+
+			}
+			else{
+				return 0;
+			}
 		}
 
 	}
