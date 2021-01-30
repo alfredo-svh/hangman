@@ -140,7 +140,7 @@ int main(){
 			cout << "Do you want to play again? (y/n)"<<endl;
 			cin >> input;
 
-			if(input == 'y'){
+			if(input == 'y' || input == 'Y'){
 				bGameOver = false;
 				curStage = 0;
 				lettersFound = 0;
